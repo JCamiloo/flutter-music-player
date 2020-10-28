@@ -8,8 +8,50 @@ class MusicPlayerScreen extends StatelessWidget {
     return Column(
       children: [
         CustomAppBar(),
-        DiskDurationImage()
+        DiskDurationImage(),
+        SongTitle()
       ],
+    );
+  }
+}
+
+class SongTitle extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 25),
+      margin: EdgeInsets.only(top: 30),
+      child: Row(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Text(
+                'Far Away', 
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.white.withOpacity(0.8)
+                )
+              ),
+              Text(
+                '-Breaking Benjamin-',
+                style: TextStyle(
+                  fontSize: 15, 
+                  color: Colors.white.withOpacity(0.5)
+                )
+              ),
+            ],
+          ),
+          Spacer(),
+          FloatingActionButton(
+            elevation: 0,
+            highlightElevation: 0,
+            backgroundColor: Color(0xffF8CB51),
+            child: Icon(Icons.play_arrow),
+            onPressed: () {},
+          )
+        ],
+      ),
     );
   }
 }
@@ -19,7 +61,7 @@ class DiskDurationImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(horizontal: 35),
       margin: EdgeInsets.only(top: 50),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
