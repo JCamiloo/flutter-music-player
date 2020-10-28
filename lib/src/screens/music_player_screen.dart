@@ -6,15 +6,45 @@ class MusicPlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        CustomAppBar(),
-        DiskDurationImage(),
-        SongTitle(),
-        Expanded(
-          child: Lyrics(),
-        )
+        Background(),
+        Column(
+          children: [
+            CustomAppBar(),
+            DiskDurationImage(),
+            SongTitle(),
+            Expanded(
+              child: Lyrics(),
+            )
+          ],
+        ),
       ],
+    );
+  }
+}
+
+class Background extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+
+    final screenSize = MediaQuery.of(context).size;
+
+    return Container(
+      width: double.infinity,
+      height: screenSize.height * 0.65,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(60)),
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.center,
+          colors: [
+            Color(0xff33333E),
+            Color(0xff201E28)
+          ]
+        )
+      ),
     );
   }
 }
@@ -44,7 +74,7 @@ class SongTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 25),
+      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
       margin: EdgeInsets.only(top: 30),
       child: Row(
         children: <Widget>[
