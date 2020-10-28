@@ -19,9 +19,14 @@ class DiskDurationImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 30),
+      margin: EdgeInsets.only(top: 50),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          DiskImage()
+          DiskImage(),
+          Spacer(),
+          ProgressBar(),
         ],
       ),
     );
@@ -71,6 +76,43 @@ class DiskImage extends StatelessWidget {
           ]
         )
       )
+    );
+  }
+}
+
+class ProgressBar extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+
+    final style = TextStyle(color: Colors.white.withOpacity(0.4));
+
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Text('05:00', style: style),
+          SizedBox(height: 10),
+          Stack(
+            children: <Widget>[
+              Container(
+                width: 3,
+                height: 230,
+                color: Colors.white.withOpacity(0.1)
+              ),
+              Positioned(
+                bottom: 0,
+                child: Container(
+                  width: 3,
+                  height: 100,
+                  color: Colors.white.withOpacity(0.8)
+                ),
+              )
+            ],
+          ),
+          SizedBox(height: 10),
+          Text('00:00', style: style)
+        ],
+      ),
     );
   }
 }
